@@ -64,7 +64,7 @@ export default async function MakinePage({ params, searchParams }: Props) {
         .eq('aktif', true)
     : { data: [] }
 
-  const model = makine.model as { model_id: string; model_adi: string } | null
+  const model = (Array.isArray(makine.model) ? makine.model[0] : makine.model) as { model_id: string; model_adi: string } | null
   const makineLabel = makine.makine_etiketi || model?.model_adi || 'Makine'
 
   return (
