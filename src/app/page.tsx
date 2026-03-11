@@ -24,7 +24,7 @@ export default async function HomePage() {
       machines = (data ?? []).map((m) => ({
         musteri_makine_id: m.musteri_makine_id,
         model_id: m.model_id,
-        makine_label: m.makine_etiketi || (m.model as { model_adi: string } | null)?.model_adi || 'Makine',
+        makine_label: m.makine_etiketi || ((Array.isArray(m.model) ? m.model[0] : m.model) as { model_adi: string } | null)?.model_adi || 'Makine',
       }))
     }
   }
