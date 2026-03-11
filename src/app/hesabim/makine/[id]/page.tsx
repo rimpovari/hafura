@@ -91,7 +91,7 @@ export default async function MakinePage({ params, searchParams }: Props) {
         <div className="flex gap-2 overflow-x-auto pb-1">
           {(tumMakineler ?? []).map((m) => {
             const isActive = m.musteri_makine_id === id
-            const label = m.makine_etiketi || (m.model as { model_adi: string } | null)?.model_adi || 'Makine'
+            const label = m.makine_etiketi || ((Array.isArray(m.model) ? m.model[0] : m.model) as { model_adi: string } | null)?.model_adi || 'Makine'
             return (
               <a
                 key={m.musteri_makine_id}
