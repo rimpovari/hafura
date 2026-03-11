@@ -170,7 +170,7 @@ export default async function MakinePage({ params, searchParams }: Props) {
             </div>
 
             <ParcaListesi
-              parcalar={(rawParcalar ?? []) as ParcaRow[]}
+              parcalar={(rawParcalar ?? []) as unknown as ParcaRow[]}
               makine_id={id}
               makine_label={makineLabel}
             />
