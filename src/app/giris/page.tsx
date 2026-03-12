@@ -11,6 +11,7 @@ export default function GirisPage() {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [message, setMessage] = useState<string | null>(null)
   const router = useRouter()
   const supabase = createClient()
 
@@ -23,12 +24,18 @@ export default function GirisPage() {
       const { error } = await supabase.auth.signInWithPassword({ email, password })
       if (error) { setError(error.message); setLoading(false); return }
     } else {
-      const { error } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: { data: { full_name: name } },
       })
       if (error) { setError(error.message); setLoading(false); return }
+      // Email onayı gerekiyorsa session gelmez
+      if (!data.session) {
+        setLoading(false)
+        setMessage('Kayıt başarılı! E-posta adresinize gönderilen onay linkine tıklayın, ardından giriş yapın.')
+        return
+      }
     }
 
     router.push('/hesabim')
@@ -100,6 +107,7 @@ export default function GirisPage() {
             </div>
 
             {error && <p className="text-red-600 text-sm">{error}</p>}
+            {message && <p className="text-emerald-600 text-sm bg-emerald-50 border border-emerald-200 px-3 py-2 rounded-lg">{message}</p>}
 
             <button
               type="submit"
