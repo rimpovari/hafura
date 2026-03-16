@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
-import { Search } from "lucide-react";
+import { Search, Plus } from "lucide-react";
+import Link from "next/link";
 
 export default function StokPage() {
   const supabase = createClient();
@@ -27,6 +28,9 @@ export default function StokPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div><h2 className="text-2xl font-bold text-slate-900">Stok Durumu</h2><p className="text-slate-500 mt-1">{rows.length} kayıt</p></div>
+        <Link href="/admin/stok/giris" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition-colors">
+          <Plus className="w-4 h-4" /> Stok Hareketi
+        </Link>
       </div>
       <form onSubmit={(e) => { e.preventDefault(); fetchData(query); }} className="mb-6 flex gap-2">
         <div className="relative flex-1"><Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" /><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Parça adı veya HAFU kodu..." className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" /></div>

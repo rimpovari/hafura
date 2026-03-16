@@ -40,6 +40,7 @@ const menuGroups: Group[] = [
     items: [
       { name: "Fiyatlar", href: "/admin/fiyatlar", icon: CircleDollarSign },
       { name: "Stok Durumu", href: "/admin/stok", icon: BarChart3 },
+      { name: "Stok Hareketi", href: "/admin/stok/giris", icon: Package },
       { name: "Depolar", href: "/admin/depolar", icon: Warehouse },
     ],
   },
