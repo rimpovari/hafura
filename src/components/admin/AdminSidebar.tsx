@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { GitBranch, Package, Layers, Tags, Database, Home, ChevronRight, FolderTree, Network } from "lucide-react";
+import { Package, Layers, Tags, Database, Home, ChevronRight, FolderTree, Network, CircleDollarSign } from "lucide-react";
 
 const menuItems = [
   { name: "Dashboard", href: "/admin", icon: Home },
@@ -12,6 +12,7 @@ const menuItems = [
   { name: "Ana Gruplar", href: "/admin/ana-gruplar", icon: FolderTree },
   { name: "Alt Gruplar", href: "/admin/alt-gruplar", icon: Database },
   { name: "Usage Matrix", href: "/admin/usage-matrix", icon: Network },
+  { name: "Fiyatlar", href: "/admin/fiyatlar", icon: CircleDollarSign },
 ];
 
 export function AdminSidebar() {
